@@ -1,5 +1,10 @@
 @extends('layouts.admin')
+
+
 @section('content')
+
+
+
 @can('tools_degree_type_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
@@ -37,8 +42,10 @@
 </div>
 
 
-
 @endsection
+
+
+
 @section('scripts')
 @parent
 <script>
@@ -100,4 +107,6 @@
 });
 
 </script>
+
+
 @endsection

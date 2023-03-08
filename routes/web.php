@@ -43,6 +43,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('batches/destroy', 'BatchController@massDestroy')->name('batches.massDestroy');
     Route::resource('batches', 'BatchController');
 
+    // Tools Mainscreen
+   // Route::delete('tools/destroy', 'ToolsController@massDestroy')->name('tools-courses.massDestroy');
+    Route::resource('tools', 'ToolsController');
+
     // Tools Course
     Route::delete('tools-courses/destroy', 'ToolsCourseController@massDestroy')->name('tools-courses.massDestroy');
     Route::resource('tools-courses', 'ToolsCourseController');
@@ -521,6 +525,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('messenger/{topic}/reply', 'MessengerController@replyToTopic')->name('messenger.reply');
     Route::get('messenger/{topic}/reply', 'MessengerController@showReply')->name('messenger.showReply');
 });
+
+
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
     if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php'))) {
@@ -556,6 +562,9 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['
     // Batch
     Route::delete('batches/destroy', 'BatchController@massDestroy')->name('batches.massDestroy');
     Route::resource('batches', 'BatchController');
+
+
+    Route::resource('tools', 'ToolsController');
 
     // Tools Course
     Route::delete('tools-courses/destroy', 'ToolsCourseController@massDestroy')->name('tools-courses.massDestroy');
@@ -936,4 +945,5 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['
     Route::post('frontend/profile', 'ProfileController@update')->name('profile.update');
     Route::post('frontend/profile/destroy', 'ProfileController@destroy')->name('profile.destroy');
     Route::post('frontend/profile/password', 'ProfileController@password')->name('profile.password');
+    
 });
