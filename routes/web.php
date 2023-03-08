@@ -1,9 +1,11 @@
 <?php
 
-Route::view('/', 'welcome');
+// Route::view('/', 'welcome');
 Auth::routes(['register' => false]);
 
-
+Route::get('/', function () {
+    return redirect('/login');
+});
 
 
 Route::get('/test', function () {
