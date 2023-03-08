@@ -3,6 +3,15 @@
 Route::view('/', 'welcome');
 Auth::routes(['register' => false]);
 
+
+
+
+Route::get('/test', function () {
+
+    return view('test');
+
+});
+
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/', 'HomeController@index')->name('home');
     // Permissions
