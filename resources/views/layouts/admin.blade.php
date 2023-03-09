@@ -104,10 +104,18 @@
 
              
                 @if (request()->is('admin/tools*')) 
-  <!-- // will match URL /tools/999 or /tools/create -->
- <!-- // will match URL /tools/999 or /tools/create -->
+  <!-- //  General Tools menu will match URL /tools/999 or /tools/create -->
+
                 <div class="row">
 <div class="col-3" style="border-right: 1px solid #cecdcd;">@include('partials.toolsmenu')</div>
+<div class="col-9"> @yield('content')</div>
+</div>
+
+@elseif (request()->is('admin/personal*')) 
+  <!-- //  General Tools menu will match URL /tools/999 or /tools/create -->
+
+                <div class="row">
+<div class="col-3" style="border-right: 1px solid #cecdcd;">@include('partials.usermenu')</div>
 <div class="col-9"> @yield('content')</div>
 </div>
                  @else 
