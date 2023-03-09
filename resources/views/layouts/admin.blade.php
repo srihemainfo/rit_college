@@ -142,7 +142,7 @@
 
 </div>
                  @else 
-
+                 @yield('content')
                 @endif
 
 
