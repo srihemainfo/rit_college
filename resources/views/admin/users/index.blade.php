@@ -41,6 +41,9 @@
                         {{ trans('cruds.user.fields.email_verified_at') }}
                     </th>
                     <th>
+                        {{ trans('cruds.user.fields.roles') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -101,6 +104,7 @@
 { data: 'enroll_master_enroll_master_number', name: 'enroll_master.enroll_master_number' },
 { data: 'email', name: 'email' },
 { data: 'email_verified_at', name: 'email_verified_at' },
+{ data: 'roles', name: 'roles.title' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
@@ -112,7 +116,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 });
 
 </script>

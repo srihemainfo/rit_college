@@ -1,9 +1,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="min-height: 917px;">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-        <span class="brand-text font-weight-light">
-            RIT
-            {{-- {{ trans('panel.site_title') }} --}}
+        <span class="brand-text font-weight-light" style="color: floralwhite">
+            <img src="{{ asset('adminlogo/menu-logo.webp') }}" alt=""  width="100%" >
         </span>
     </a>
 

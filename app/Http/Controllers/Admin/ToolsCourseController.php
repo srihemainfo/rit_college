@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyToolsCourseRequest;
 use App\Http\Requests\StoreToolsCourseRequest;
 use App\Http\Requests\UpdateToolsCourseRequest;
+use App\Models\ToolsDepartment;
 use App\Models\ToolsCourse;
 use Gate;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class ToolsCourseController extends Controller
         abort_if(Gate::denies('tools_course_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = ToolsCourse::query()->select(sprintf('%s.*', (new ToolsCourse)->table));
+            $query = ToolsCourse::with('department')->select(sprintf('%s.*', (new ToolsCourse)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -43,11 +44,14 @@ class ToolsCourseController extends Controller
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : '';
             });
+            $table->addColumn('department_name', function ($row) {
+                return $row->department ? $row->department->name : '';
+            });
             $table->editColumn('name', function ($row) {
                 return $row->name ? $row->name : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder']);
+            $table->rawColumns(['actions', 'placeholder','department']);
 
             return $table->make(true);
         }
@@ -59,7 +63,10 @@ class ToolsCourseController extends Controller
     {
         abort_if(Gate::denies('tools_course_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.toolsCourses.create');
+        $departments = ToolsDepartment::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+
+        return view('admin.toolsCourses.create', compact('departments'));
     }
 
     public function store(StoreToolsCourseRequest $request)
@@ -73,7 +80,11 @@ class ToolsCourseController extends Controller
     {
         abort_if(Gate::denies('tools_course_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.toolsCourses.edit', compact('toolsCourse'));
+        $departments = ToolsDepartment::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $toolsCourse->load('department');
+
+        return view('admin.toolsCourses.edit', compact('toolsCourse','departments'));
     }
 
     public function update(UpdateToolsCourseRequest $request, ToolsCourse $toolsCourse)
@@ -86,6 +97,8 @@ class ToolsCourseController extends Controller
     public function show(ToolsCourse $toolsCourse)
     {
         abort_if(Gate::denies('tools_course_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $toolsCourse->load('department');
 
         return view('admin.toolsCourses.show', compact('toolsCourse'));
     }

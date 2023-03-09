@@ -25,6 +25,10 @@
                         {{ trans('cruds.toolsCourse.fields.id') }}
                     </th>
                     <th>
+                        {{-- {{ trans('cruds.toolsCourse.fields.department') }} --}}
+                        {{ trans('department') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.toolsCourse.fields.name') }}
                     </th>
                     <th>
@@ -84,6 +88,7 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
+{ data: 'department_name', name: 'department.name' },
 { data: 'name', name: 'name' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
@@ -96,7 +101,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 });
 
 </script>

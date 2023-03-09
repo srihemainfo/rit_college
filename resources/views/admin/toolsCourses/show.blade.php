@@ -25,6 +25,15 @@
                     </tr>
                     <tr>
                         <th>
+                            {{-- {{ trans('cruds.toolsCourse.fields.department') }} --}}
+                            {{ trans('department') }}
+                        </th>
+                        <td>
+                            {{ $toolsCourse->department->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.toolsCourse.fields.name') }}
                         </th>
                         <td>
