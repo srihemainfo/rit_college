@@ -120,7 +120,20 @@
 <div class="col-9"> @yield('content')</div>
 </div>
 
-@elseif (request()->is('admin/personal*')) 
+@elseif (request()->is('admin/personal*') || request()->is('admin/students') || request()->is('admin/educational-details') 
+|| request()->is('admin/addresses') || request()->is('admin/bank-account-details') || request()->is('admin/experience-details') 
+|| request()->is('admin/teaching-staffs') || request()->is('admin/non-teaching-staffs') || request()->is('admin/add-conferences') 
+|| request()->is('admin/entrance-exams') || request()->is('admin/guest-lectures') || request()->is('admin/industrial-trainings') 
+|| request()->is('admin/ivs') || request()->is('admin/online-courses') || request()->is('admin/documents') 
+|| request()->is('admin/seminars') || request()->is('admin/saboticals') || request()->is('admin/sponsers') 
+|| request()->is('admin/sttps') || request()->is('admin/workshops') || request()->is('admin/patents') 
+|| request()->is('admin/awards') || request()->is('admin/fundingdetalis')  || request()->is('admin/academic-details') 
+|| request()->is('admin/parent-details') || request()->is('admin/interns')  || request()->is('admin/industrial-experiences')
+|| request()->is('admin/parent-details') || request()->is('admin/interns')  || request()->is('admin/industrial-experiences') 
+)
+
+
+
   <!-- //  User Tools menu will match URL /tools/999 or /tools/create -->
 
                 <div class="row">
