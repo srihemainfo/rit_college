@@ -8,6 +8,7 @@ use App\Http\Requests\MassDestroyUserRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\CourseEnrollMaster;
+use App\Models\Role;
 use App\Models\User;
 use Gate;
 use Illuminate\Http\Request;
@@ -58,7 +59,16 @@ class UsersController extends Controller
                 return $row->email ? $row->email : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'enroll_master']);
+            $table->editColumn('roles', function ($row) {
+                $labels = [];
+                foreach ($row->roles as $role) {
+                    $labels[] = sprintf('<span class="label label-info label-many">%s</span>', $role->title);
+                }
+
+                return implode(' ', $labels);
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'enroll_master', 'roles']);
 
             return $table->make(true);
         }
@@ -72,12 +82,17 @@ class UsersController extends Controller
 
         $enroll_masters = CourseEnrollMaster::pluck('enroll_master_number', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.users.create', compact('enroll_masters'));
+        $roles = Role::pluck('title', 'id');
+
+        return view('admin.users.create', compact('enroll_masters', 'roles'));
     }
 
     public function store(StoreUserRequest $request)
     {
+
         $user = User::create($request->all());
+
+        $user->roles()->sync($request->input('roles', []));
 
         return redirect()->route('admin.users.index');
     }
@@ -88,14 +103,18 @@ class UsersController extends Controller
 
         $enroll_masters = CourseEnrollMaster::pluck('enroll_master_number', 'id')->prepend(trans('global.pleaseSelect'), '');
 
+        $roles = Role::pluck('title', 'id');
+
         $user->load('enroll_master', 'roles');
 
-        return view('admin.users.edit', compact('enroll_masters', 'user'));
+        return view('admin.users.edit', compact('enroll_masters', 'roles', 'user'));
     }
 
     public function update(UpdateUserRequest $request, User $user)
     {
         $user->update($request->all());
+
+        $user->roles()->sync($request->input('roles', []));
 
         return redirect()->route('admin.users.index');
     }
@@ -129,3 +148,4 @@ class UsersController extends Controller
         return response(null, Response::HTTP_NO_CONTENT);
     }
 }
+?>

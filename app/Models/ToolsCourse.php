@@ -21,6 +21,7 @@ class ToolsCourse extends Model
     ];
 
     protected $fillable = [
+        'department_id',
         'name',
         'created_at',
         'updated_at',
@@ -30,5 +31,10 @@ class ToolsCourse extends Model
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(ToolsDepartment::class, 'department_id');
     }
 }
