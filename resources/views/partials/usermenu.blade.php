@@ -299,6 +299,17 @@
                         </a>
                     </li>
                 @endcan
+                @can('fundingdetali_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.fundingdetalis.index") }}" class="nav-link {{ request()->is("admin/fundingdetalis") || request()->is("admin/fundingdetalis/*") ? "active" : "" }}">
+                            <i class="fa-fw nav-icon fas fa-cogs">
 
+                            </i>
+                            <p>
+                                {{ trans('cruds.fundingdetali.title') }}
+                            </p>
+                        </a>
+                    </li>
+                @endcan
                         </ul>
               

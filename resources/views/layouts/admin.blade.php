@@ -103,7 +103,16 @@
                 @endif
 
              
-                @if (request()->is('admin/tools*')) 
+                @if (request()->is('admin/tools*') || request()->is('admin/batches')
+                || request()->is('admin/academic-years') || request()->is('admin/semesters') || request()->is('admin/sections')
+                || request()->is('admin/course-enroll-masters') || request()->is('admin/nationalities') || request()->is('admin/religions')
+                || request()->is('admin/blood-groups') || request()->is('admin/communities') || request()->is('admin/mother-tongues')
+                || request()->is('admin/education-boards') || request()->is('admin/education-types') || request()->is('admin/scholarships')
+                || request()->is('admin/subjects') || request()->is('admin/mediumof-studieds') || request()->is('admin/teaching-types')
+                || request()->is('admin/examstaffs') || request()->is('admin/college-blocks') || request()->is('admin/scholorships')
+                || request()->is('admin/leave-statuses') || request()->is('admin/class-rooms') || request()->is('admin/email-settings')
+                || request()->is('admin/sms-settings') || request()->is('admin/sms-templates') || request()->is('admin/email-templates')
+                ) 
   <!-- //  General Tools menu will match URL /tools/999 or /tools/create -->
 
                 <div class="row">
@@ -112,7 +121,7 @@
 </div>
 
 @elseif (request()->is('admin/personal*')) 
-  <!-- //  General Tools menu will match URL /tools/999 or /tools/create -->
+  <!-- //  User Tools menu will match URL /tools/999 or /tools/create -->
 
                 <div class="row">
 <div class="col-3" style="border-right: 1px solid #cecdcd;">@include('partials.usermenu')</div>
@@ -130,7 +139,7 @@
 
         <footer class="main-footer">
             <div class="float-right d-none d-sm-block">
-                <b>Version</b> 3.0.0-alpha
+                <b>Kalvi ERP</b> 2.0
             </div>
             <strong> &copy;</strong> {{ trans('global.allRightsReserved') }}
         </footer>
