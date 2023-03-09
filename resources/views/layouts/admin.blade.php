@@ -116,8 +116,8 @@
   <!-- //  General Tools menu will match URL /tools/999 or /tools/create -->
 
                 <div class="row">
-<div class="col-3" style="border-right: 1px solid #cecdcd;">@include('partials.toolsmenu')</div>
-<div class="col-9"> @yield('content')</div>
+<div class="col-9" style="border-right: 1px solid #cecdcd;">@yield('content')</div>
+<div class="col-3"> @include('partials.toolsmenu')</div>
 </div>
 
 @elseif (request()->is('admin/personal*') || request()->is('admin/students') || request()->is('admin/educational-details') 
@@ -137,8 +137,9 @@
   <!-- //  User Tools menu will match URL /tools/999 or /tools/create -->
 
                 <div class="row">
-<div class="col-3" style="border-right: 1px solid #cecdcd;">@include('partials.usermenu')</div>
-<div class="col-9"> @yield('content')</div>
+                <div class="col-9" style="border-right: 1px solid #cecdcd;">@yield('content')</div>
+<div class="col-3"> @include('partials.usermenu')</div>
+
 </div>
                  @else 
 
