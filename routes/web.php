@@ -511,6 +511,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('staff-transfer-infos/process-csv-import', 'StaffTransferInfoController@processCsvImport')->name('staff-transfer-infos.processCsvImport');
     Route::resource('staff-transfer-infos', 'StaffTransferInfoController');
 
+
+     // Staff Salary
+     Route::delete('staff-salaries/destroy', 'StaffSalaryController@massDestroy')->name('staff-salaries.massDestroy');
+     Route::post('staff-salaries/parse-csv-import', 'StaffSalaryController@parseCsvImport')->name('staff-salaries.parseCsvImport');
+     Route::post('staff-salaries/process-csv-import', 'StaffSalaryController@processCsvImport')->name('staff-salaries.processCsvImport');
+     Route::resource('staff-salaries', 'StaffSalaryController');
+
+
     // Fundingdetalis
     Route::delete('fundingdetalis/destroy', 'FundingdetalisController@massDestroy')->name('fundingdetalis.massDestroy');
     Route::resource('fundingdetalis', 'FundingdetalisController');
@@ -947,5 +955,5 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['
     Route::post('frontend/profile', 'ProfileController@update')->name('profile.update');
     Route::post('frontend/profile/destroy', 'ProfileController@destroy')->name('profile.destroy');
     Route::post('frontend/profile/password', 'ProfileController@password')->name('profile.password');
-    
+
 });

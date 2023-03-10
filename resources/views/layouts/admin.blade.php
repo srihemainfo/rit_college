@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ trans('panel.site_title') }}</title>
+    <title>Rajalakshmi Institute of Technology</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('adminlogo/title_logo.png') }}">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
@@ -103,16 +103,46 @@
                 @endif
 
              
-                @if (request()->is('admin/tools*')) 
-  <!-- // will match URL /tools/999 or /tools/create -->
- <!-- // will match URL /tools/999 or /tools/create -->
+                @if (request()->is('admin/tools*') || request()->is('admin/batches')
+                || request()->is('admin/academic-years') || request()->is('admin/semesters') || request()->is('admin/sections')
+                || request()->is('admin/course-enroll-masters') || request()->is('admin/nationalities') || request()->is('admin/religions')
+                || request()->is('admin/blood-groups') || request()->is('admin/communities') || request()->is('admin/mother-tongues')
+                || request()->is('admin/education-boards') || request()->is('admin/education-types') || request()->is('admin/scholarships')
+                || request()->is('admin/subjects') || request()->is('admin/mediumof-studieds') || request()->is('admin/teaching-types')
+                || request()->is('admin/examstaffs') || request()->is('admin/college-blocks') || request()->is('admin/scholorships')
+                || request()->is('admin/leave-statuses') || request()->is('admin/class-rooms') || request()->is('admin/email-settings')
+                || request()->is('admin/sms-settings') || request()->is('admin/sms-templates') || request()->is('admin/email-templates')
+                ) 
+  <!-- //  General Tools menu will match URL /tools/999 or /tools/create -->
+
                 <div class="row">
-<div class="col-3" style="border-right: 1px solid #cecdcd;">@include('partials.toolsmenu')</div>
-<div class="col-9"> @yield('content')</div>
+<div class="col-9" style="border-right: 1px solid #cecdcd;">@yield('content')</div>
+<div class="col-3"> @include('partials.toolsmenu')</div>
+</div>
+
+@elseif (request()->is('admin/personal*') || request()->is('admin/students') || request()->is('admin/educational-details') 
+|| request()->is('admin/addresses') || request()->is('admin/bank-account-details') || request()->is('admin/experience-details') 
+|| request()->is('admin/teaching-staffs') || request()->is('admin/non-teaching-staffs') || request()->is('admin/add-conferences') 
+|| request()->is('admin/entrance-exams') || request()->is('admin/guest-lectures') || request()->is('admin/industrial-trainings') 
+|| request()->is('admin/ivs') || request()->is('admin/online-courses') || request()->is('admin/documents') 
+|| request()->is('admin/seminars') || request()->is('admin/saboticals') || request()->is('admin/sponsers') 
+|| request()->is('admin/sttps') || request()->is('admin/workshops') || request()->is('admin/patents') 
+|| request()->is('admin/awards') || request()->is('admin/fundingdetalis')  || request()->is('admin/academic-details') 
+|| request()->is('admin/parent-details') || request()->is('admin/interns')  || request()->is('admin/industrial-experiences')
+|| request()->is('admin/parent-details') || request()->is('admin/interns')  || request()->is('admin/industrial-experiences') 
+)
+
+
+
+  <!-- //  User Tools menu will match URL /tools/999 or /tools/create -->
+
+                <div class="row">
+                <div class="col-9" style="border-right: 1px solid #cecdcd;">@yield('content')</div>
+<div class="col-3"> @include('partials.usermenu')</div>
+
 </div>
                  @else 
-
-                    @yield('content')      
+                 @yield('content')
                 @endif
 
 
@@ -122,7 +152,7 @@
 
         <footer class="main-footer">
             <div class="float-right d-none d-sm-block">
-                <b>Version</b> 3.0.0-alpha
+                <b>Kalvi ERP</b> 2.0
             </div>
             <strong> &copy;</strong> {{ trans('global.allRightsReserved') }}
         </footer>

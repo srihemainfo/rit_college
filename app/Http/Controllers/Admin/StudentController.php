@@ -8,6 +8,7 @@ use App\Http\Requests\MassDestroyStudentRequest;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Models\CourseEnrollMaster;
+// use App\Models\User;
 use App\Models\Student;
 use Gate;
 use Illuminate\Http\Request;
@@ -77,6 +78,12 @@ class StudentController extends Controller
     public function store(StoreStudentRequest $request)
     {
         $student = Student::create($request->all());
+
+        // $user = User::create([
+        //     'name'=>$request->name,
+        //     'email' => $request->email,
+        //     'password' => $request ->mobile_no
+        // ]);
 
         return redirect()->route('admin.students.index');
     }

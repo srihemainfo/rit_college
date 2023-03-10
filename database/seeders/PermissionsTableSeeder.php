@@ -1974,6 +1974,26 @@ class PermissionsTableSeeder extends Seeder
                 'id'    => 491,
                 'title' => 'profile_password_edit',
             ],
+            [
+                'id'    => 492,
+                'title' => 'staff_salary_create',
+            ],
+            [
+                'id'    => 493,
+                'title' => 'staff_salary_edit',
+            ],
+            [
+                'id'    => 494,
+                'title' => 'staff_salary_show',
+            ],
+            [
+                'id'    => 495,
+                'title' => 'staff_salary_delete',
+            ],
+            [
+                'id'    => 496,
+                'title' => 'staff_salary_access',
+            ],
         ];
 
         Permission::insert($permissions);

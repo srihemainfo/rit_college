@@ -37,6 +37,55 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.student.fields.enroll_master_helper') }}</span>
             </div>
+            {{-- new addition --}}
+            {{-- <div class="form-group">
+                <label class="required" for="roll_no">{{ trans('cruds.student.fields.roll_no') }}</label>
+                <input class="form-control {{ $errors->has('roll_no') ? 'is-invalid' : '' }}" type="text" name="roll_no" id="roll_no" value="{{ old('roll_no', '') }}" required>
+                @if($errors->has('roll_no'))
+                    <span class="text-danger">{{ $errors->first('roll_no') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.student.fields.roll_no_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="student_batch">{{ trans('cruds.student.fields.student_batch') }}</label>
+                <input class="form-control {{ $errors->has('student_batch') ? 'is-invalid' : '' }}" type="text" name="student_batch" id="student_batch" value="{{ old('student_batch', '') }}" required>
+                @if($errors->has('student_batch'))
+                    <span class="text-danger">{{ $errors->first('student_batch') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.student.fields.student_batch_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="current_semester">{{ trans('cruds.student.fields.current_semester') }}</label>
+                <input class="form-control {{ $errors->has('current_semester') ? 'is-invalid' : '' }}" type="text" name="current_semester" id="current_semester" value="{{ old('current_semester', '') }}" required>
+                @if($errors->has('current_semester'))
+                    <span class="text-danger">{{ $errors->first('current_semester') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.student.fields.current_semester_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="section">{{ trans('cruds.student.fields.section') }}</label>
+                <input class="form-control {{ $errors->has('section') ? 'is-invalid' : '' }}" type="text" name="section" id="section" value="{{ old('section', '') }}" required>
+                @if($errors->has('section'))
+                    <span class="text-danger">{{ $errors->first('section') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.student.fields.section_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="student_initial">{{ trans('cruds.student.fields.student_initial') }}</label>
+                <input class="form-control {{ $errors->has('student_initial') ? 'is-invalid' : '' }}" type="text" name="student_initial" id="student_initial" value="{{ old('student_initial', '') }}" required>
+                @if($errors->has('student_initial'))
+                    <span class="text-danger">{{ $errors->first('student_initial') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.student.fields.student_initial') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="admitted_course">{{ trans('cruds.student.fields.admitted_course') }}</label>
+                <input class="form-control {{ $errors->has('admitted_course') ? 'is-invalid' : '' }}" type="text" name="admitted_course" id="admitted_course" value="{{ old('admitted_course', '') }}" required>
+                @if($errors->has('admitted_course'))
+                    <span class="text-danger">{{ $errors->first('admitted_course') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.student.fields.admitted_course_helper') }}</span>
+            </div> --}}
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}

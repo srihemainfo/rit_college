@@ -11,7 +11,7 @@
             @csrf
             <div class="form-group">
                 {{-- <label class="required" for="department_id">{{ trans('cruds.toolsCourse.fields.department') }}</label> --}}
-                <label class="required" for="department_id">{{ trans('Department') }}</label>
+                <label class="required" for="department_id">Department</label>
                 <select class="form-control select2 {{ $errors->has('department') ? 'is-invalid' : '' }}" name="department_id" id="department_id" required>
                     @foreach($departments as $id => $entry)
                         <option value="{{ $id }}" {{ old('department_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
