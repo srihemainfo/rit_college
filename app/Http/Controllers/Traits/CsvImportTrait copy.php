@@ -2,16 +2,10 @@
 
 namespace App\Http\Controllers\Traits;
 
-use SpreadsheetReader;
-use App\Models\Student;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-
-
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+use SpreadsheetReader;
 
 trait CsvImportTrait
 {
@@ -20,15 +14,15 @@ trait CsvImportTrait
         try {
             $filename = $request->input('filename', false);
             $path     = storage_path('app/csv_import/' . $filename);
+
             $hasHeader = $request->input('hasHeader', false);
 
             $fields = $request->input('fields', false);
-
-
             $fields = array_flip(array_filter($fields));
 
             $modelName = $request->input('modelName', false);
             $model     = "App\Models\\" . $modelName;
+
             $reader = new SpreadsheetReader($path);
             $insert = [];
 
@@ -39,13 +33,8 @@ trait CsvImportTrait
 
                 $tmp = [];
                 foreach ($fields as $header => $k) {
-
-
                     if (isset($row[$k])) {
-
-
                         $tmp[$header] = $row[$k];
-
                     }
                 }
 
@@ -56,56 +45,21 @@ trait CsvImportTrait
 
             $for_insert = array_chunk($insert, 100);
 
-   $count = count($for_insert[0]);
-
-
-//    for($i=2;$i<$count;$i++){
-
-//   $arr = array_filter($for_insert[0][$i]);
-//   dd($arr);
-//    }
-
-
-
-
-
-
-
             foreach ($for_insert as $insert_item) {
 
-
+                dd($insert_item);
                 $model::insert($insert_item);
-
             }
 
             $rows  = count($insert);
-
             $table = Str::plural($modelName);
 
             File::delete($path);
 
             session()->flash('message', trans('global.app_imported_rows_to_table', ['rows' => $rows, 'table' => $table]));
 
-
-            if($model=="App\Models\Student"){
-
-
-                for($i=2;$i<$count-1;$i++){
-
-               $VAR = DB::table('users')->insert(
-                    [
-                        'name' =>  'student',
-                        'email' => $for_insert[0][$i]["student_email_id"],
-                        'password' => Hash::make($for_insert[0][$i]["student_phone_no"]),
-
-                    ]
-                );
-
-                }
-             }
             return redirect($request->input('redirect'));
-        }
-        catch (\Exception $ex) {
+        } catch (\Exception $ex) {
             throw $ex;
         }
     }
@@ -153,4 +107,3 @@ trait CsvImportTrait
         return view('csvImport.parseInput', compact('headers', 'filename', 'fillables', 'hasHeader', 'modelName', 'lines', 'redirect', 'routeName'));
     }
 }
-?>
