@@ -191,7 +191,23 @@
                         </ul>
                     </li>
                 @endcan
+<<<<<<< HEAD
 
+=======
+                <!-- @can('teaching_staff_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.teaching-staffs.index") }}" class="nav-link {{ request()->is("admin/teaching-staffs") || request()->is("admin/teaching-staffs/*") ? "active" : "" }}">
+                            <i class="fa-fw nav-icon fas fa-cogs">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.teachingStaff.title') }}
+                            </p>
+                        </a>
+                    </li>
+                @endcan -->
+               
+>>>>>>> branch_03
                 @can('student_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.students.index") }}" class="nav-link {{ request()->is("admin/students") || request()->is("admin/students/*") ? "active" : "" }}">
@@ -204,6 +220,7 @@
                         </a>
                     </li>
                 @endcan
+
                 @can('hrm_access')
                     <li class="nav-item has-treeview {{ request()->is("admin/leave-types*") ? "menu-open" : "" }} {{ request()->is("admin/leave-staff-allocations*") ? "menu-open" : "" }} {{ request()->is("admin/od-masters*") ? "menu-open" : "" }} {{ request()->is("admin/settings*") ? "menu-open" : "" }} {{ request()->is("admin/take-attentance-students*") ? "menu-open" : "" }} {{ request()->is("admin/od-requests*") ? "menu-open" : "" }} {{ request()->is("admin/internship-requests*") ? "menu-open" : "" }} {{ request()->is("admin/hrm-request-permissions*") ? "menu-open" : "" }} {{ request()->is("admin/staff-transfer-infos*") ? "menu-open" : "" }} {{ request()->is("admin/hrm-request-leaves*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle {{ request()->is("admin/leave-types*") ? "active" : "" }} {{ request()->is("admin/leave-staff-allocations*") ? "active" : "" }} {{ request()->is("admin/od-masters*") ? "active" : "" }} {{ request()->is("admin/settings*") ? "active" : "" }} {{ request()->is("admin/take-attentance-students*") ? "active" : "" }} {{ request()->is("admin/od-requests*") ? "active" : "" }} {{ request()->is("admin/internship-requests*") ? "active" : "" }} {{ request()->is("admin/hrm-request-permissions*") ? "active" : "" }} {{ request()->is("admin/staff-transfer-infos*") ? "active" : "" }} {{ request()->is("admin/hrm-request-leaves*") ? "active" : "" }}" href="#">
