@@ -122,7 +122,7 @@
 
 @elseif (request()->is('admin/personal*') || request()->is('admin/students') || request()->is('admin/educational-details') 
 || request()->is('admin/addresses') || request()->is('admin/bank-account-details') || request()->is('admin/experience-details') 
-|| request()->is('admin/teaching-staffs') || request()->is('admin/non-teaching-staffs') || request()->is('admin/add-conferences') 
+|| request()->is('admin/teaching-staffs/*') || request()->is('admin/non-teaching-staffs') || request()->is('admin/add-conferences') 
 || request()->is('admin/entrance-exams') || request()->is('admin/guest-lectures') || request()->is('admin/industrial-trainings') 
 || request()->is('admin/ivs') || request()->is('admin/online-courses') || request()->is('admin/documents') 
 || request()->is('admin/seminars') || request()->is('admin/saboticals') || request()->is('admin/sponsers') 

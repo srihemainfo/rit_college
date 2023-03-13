@@ -25,7 +25,7 @@ class TeachingStaffController extends Controller
         abort_if(Gate::denies('teaching_staff_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = TeachingStaff::with(['subject', 'enroll_master', 'working_as'])->select(sprintf('%s.*', (new TeachingStaff)->table));
+            $query = TeachingStaff::with(['subject', 'enroll_master', 'working_as'])->select(sprintf('%s.*', (new TeachingStaff)->table))->whereIn('Designation', ['Assistant Professor','Professor', 'Assistant Professor (SS)'])->orWhereNull('Designation');
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -61,7 +61,7 @@ class TeachingStaffController extends Controller
             });
 
             $table->addColumn('working_as_title', function ($row) {
-                return $row->working_as ? $row->working_as->title : '';
+                return $row->working_as ? $row->working_as->title : $row->Designation;
             });
 
             $table->rawColumns(['actions', 'placeholder', 'subject', 'enroll_master', 'working_as']);

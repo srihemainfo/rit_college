@@ -191,7 +191,7 @@
                         </ul>
                     </li>
                 @endcan
-                <!-- @can('teaching_staff_access')
+                @can('teaching_staff_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.teaching-staffs.index") }}" class="nav-link {{ request()->is("admin/teaching-staffs") || request()->is("admin/teaching-staffs/*") ? "active" : "" }}">
                             <i class="fa-fw nav-icon fas fa-cogs">
@@ -202,7 +202,7 @@
                             </p>
                         </a>
                     </li>
-                @endcan -->
+                @endcan
                
                 @can('student_access')
                     <li class="nav-item">

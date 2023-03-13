@@ -1,5 +1,5 @@
 <ul class="nav nav-pills nav-sidebar flex-column">
-@can('academic_detail_access')
+<!-- @can('academic_detail_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.academic-details.index") }}" class="nav-link {{ request()->is("admin/academic-details") || request()->is("admin/academic-details/*") ? "active" : "" }}">
                             <i class="fa-fw nav-icon fas fa-graduation-cap">
@@ -10,7 +10,7 @@
                             </p>
                         </a>
                     </li>
-                @endcan
+                @endcan -->
                 @can('personal_detail_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.personal-details.index") }}" class="nav-link {{ request()->is("admin/personal-details") || request()->is("admin/personal-details/*") ? "active" : "" }}">
