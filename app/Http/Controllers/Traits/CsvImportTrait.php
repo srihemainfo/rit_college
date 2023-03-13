@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use SpreadsheetReader;
+use App\Models\User;
 
 trait CsvImportTrait
 {
@@ -25,6 +26,7 @@ trait CsvImportTrait
 
             $reader = new SpreadsheetReader($path);
             $insert = [];
+          
 
             foreach ($reader as $key => $row) {
                 if ($hasHeader && $key == 0) {
@@ -44,6 +46,17 @@ trait CsvImportTrait
             }
 
             $for_insert = array_chunk($insert, 100);
+            if($request->modelName=='TeachingStaff'){
+                $users = [];
+                foreach ($for_insert[0] as $insert) {
+                    $user = User::firstOrCreate(
+                        ['email' => $insert['EmailIDOffical']],
+                        ['name' => $insert['name'], 'password' => $insert['ContactNo']]
+                    );
+                    $users[] = $user->toArray();
+                }
+                // dd($users);
+                }
 
             foreach ($for_insert as $insert_item) {
                 $model::insert($insert_item);

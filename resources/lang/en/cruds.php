@@ -674,7 +674,7 @@ return [
         ],
     ],
     'teachingStaff' => [
-        'title'          => 'Teaching Staff',
+        'title'          => 'Staff',
         'title_singular' => 'Teaching Staff',
         'fields'         => [
             'id'                   => 'ID',

@@ -28,6 +28,27 @@ class TeachingStaff extends Model
         'created_at',
         'updated_at',
         'deleted_at',
+        'StaffCode',
+        'BiometricID',
+        'Gender',
+        'Designation',
+        'Dept',
+        'Qualification',
+        'DOJ',
+        'DOR',
+        'OtherEnggCollegeExperience',
+        'TotalExperience',
+        'ContactNo',
+        'EmailIDOffical',
+        'Religion',
+        'Community',
+        'PanNo',
+        'PassportNo',
+        'AadharNo',
+        'COECode',
+        'AICTE',
+        'DOB',
+        'HighestDegree'
     ];
 
     protected function serializeDate(DateTimeInterface $date)
