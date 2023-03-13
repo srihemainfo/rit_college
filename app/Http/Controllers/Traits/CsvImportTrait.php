@@ -46,6 +46,7 @@ trait CsvImportTrait
             }
 
             $for_insert = array_chunk($insert, 100);
+            // code for creating User if csv uploaded in staff module 
             if($request->modelName=='TeachingStaff'){
                 $users = [];
                 foreach ($for_insert[0] as $insert) {
